@@ -1,0 +1,9 @@
+{
+	"description": "Solves sudoku puzzles",
+	"license": "proprietary",
+	"authors": [
+		"Yuzhou Huang"
+	],
+	"copyright": "Copyright © 2018, Yuzhou Huang",
+	"name": "sudoku-solver"
+}

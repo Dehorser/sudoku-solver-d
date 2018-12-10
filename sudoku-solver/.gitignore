@@ -1,0 +1,14 @@
+.dub
+docs.json
+__dummy.html
+docs/
+sudoku-solver.so
+sudoku-solver.dylib
+sudoku-solver.dll
+sudoku-solver.a
+sudoku-solver.lib
+sudoku-solver-test-*
+*.exe
+*.o
+*.obj
+*.lst
