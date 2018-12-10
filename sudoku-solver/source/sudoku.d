@@ -57,7 +57,8 @@ class Sudoku {
     }
 
     bool check(size_t row, size_t col, int v) {
-        return check_row(row, col, v);
+        return check_row(row, col, v) && check_col(row, col, v)
+            && check_subgrid(row, col, v);
     }
 
     // Checks if a value is consistent with a given row
@@ -71,6 +72,24 @@ class Sudoku {
     }
 
     bool check_col(size_t row, size_t col, int v) {
+        foreach(i; 0..SUDOKU_SIZE) {
+            if (i != row && board[i][col] == v) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    bool check_subgrid(size_t row, size_t col, int v) {
+        size_t base_row = row - row%3;
+        size_t base_col = col - col%3;
+        foreach(r; base_row..(base_row+3)) {
+            foreach(c; base_col..(base_col+3)) {
+                if(!(r == row && c == col) && board[r][c] == v) {
+                    return false;
+                }
+            }
+        }
         return true;
     }
 
@@ -81,7 +100,7 @@ class Sudoku {
         foreach(row_i, row; board) {
             foreach(col_i, n; row) {
                 assert(n == BLANK || n in iota(1, SUDOKU_SIZE + 1, 1));
-                assert(check(row_i, coli));
+                assert(check(row_i, col_i));
             }
         }
     }
